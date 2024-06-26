@@ -94,4 +94,28 @@ class CalculatorTest {
         // Then
         assertEquals("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)", exception.getMessage());
     }
+
+    @Test
+    void should_throw_exception_when_input_is_plus_2_3() {
+        // Given
+        String[] args = {"+", "2", "3"};
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.processArgs(args));
+
+        // Then
+        assertEquals("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)", exception.getMessage());
+    }
+
+    @Test
+    void should_throw_exception_when_input_is_2_plus_3() {
+        // Given
+        String[] args = {"2", "+", "3"};
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.processArgs(args));
+
+        // Then
+        assertEquals("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)", exception.getMessage());
+    }
 }

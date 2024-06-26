@@ -6,10 +6,17 @@ public class Calculator {
             throw new IllegalArgumentException("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)");
         }
 
-        int a = Integer.parseInt(args[0]);
-        int b = Integer.parseInt(args[1]);
-        String operator = args[2];
 
+        int a;
+        int b;
+        try {
+            a = Integer.parseInt(args[0]);
+            b = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)");
+        }
+
+        String operator = args[2];
         return calculate(a, b, operator);
     }
 
