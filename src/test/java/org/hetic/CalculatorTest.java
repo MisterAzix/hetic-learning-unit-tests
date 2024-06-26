@@ -68,13 +68,25 @@ class CalculatorTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.processArgs(args));
 
         // Then
-        assertEquals("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)", exception.getMessage());
+        assertEquals("Invalid operator", exception.getMessage());
     }
 
     @Test
     void should_throw_exception_when_input_is_2() {
         // Given
         String[] args = {"2"};
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.processArgs(args));
+
+        // Then
+        assertEquals("You must provide 3 arguments: two numbers and an operator (<number> <number> <operator>)", exception.getMessage());
+    }
+
+    @Test
+    void should_throw_exception_when_input_is_empty() {
+        // Given
+        String[] args = {};
 
         // When
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.processArgs(args));
